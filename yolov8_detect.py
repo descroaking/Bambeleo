@@ -7,19 +7,19 @@ import math
 # 1. Load the custom-trained YOLOv8 model
 model = YOLO("/workspaces/Bambeleo/yolov8_model/best.pt")  # Replace "best.pt" with the path to your model weights file if needed
 
-# 2. Load an image for inference
+# Load an image for inference
 image_path = "/workspaces/Bambeleo/test_image/gameSetup_img6.jpeg"  # Replace with the path to your test image
 image = cv2.imread(image_path)
 image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB for visualization
 
-# 3. Perform inference on the image
+# Perform inference on the image
 results = model(image_rgb)  # Runs inference
 
-# 4. Initialize variables
+# Initialize variables
 board_center = None
 distances = []
 
-# 5. Process results to find board and other objects
+# Process results to find board and other objects
 annotated_image = image_rgb.copy()  # Create a copy for annotation
 
 for r in results:
@@ -54,14 +54,14 @@ for r in results:
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
                 cv2.circle(annotated_image, (center_x, center_y), 5, (255, 0, 0), -1)  # Blue points for other objects
 
-# 6. Display the annotated image
+# Display the annotated image
 plt.figure(figsize=(10, 10))
 plt.imshow(annotated_image)
 plt.axis("off")
 plt.title("Relative Positions of Objects with Respect to the Board")
 plt.show()
 
-# 7. Print distances for reference
+# Print distances for reference
 if board_center:
     print("Relative positions and distances from board center (0, 0):")
     for obj in distances:
