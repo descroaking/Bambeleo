@@ -1,4 +1,4 @@
-# Bambeleo
+# Bamboleo
 ## Vision Part
 ### Files
 ```yolov8_detect.py``` uses the trained YOLOv8 model to detect different types of blocks and the board. Calculating the relative position of each block to the center of the board.
